@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Mi Sun</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #ffe5ec, #ffc2d1);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Contenedor Principal */
+        .card {
+            background: rgba(255, 255, 255, 0.85);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            backdrop-filter: blur(10px);
+            max-width: 450px;
+            width: 90%;
+            z-index: 10;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        /* Animación de entrada de la tarjeta */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Estilo de la Imagen */
+        .photo-container {
+            width: 100%;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            margin-bottom: 20px;
+        }
+
+        .photo-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .photo-container img:hover {
+            transform: scale(1.03);
+        }
+
+        /* Textos */
+        h1 {
+            color: #ff477e;
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+        }
+
+        p {
+            color: #4a4a4a;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            font-weight: 500;
+        }
+
+        /* Animación de Corazones de Fondo */
+        .heart {
+            position: absolute;
+            color: rgba(255, 71, 126, 0.4);
+            font-size: 20px;
+            pointer-events: none;
+            animation: float 6s linear infinite;
+            bottom: -50px;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Tarjeta de Amor -->
+    <div class="card">
+        <div class="photo-container">
+            <!-- Ruta de la imagen según tus indicaciones -->
+            <img src="Faye.png" alt="Para Mi Sun">
+        </div>
+        <h1>Mi Sun, te amo</h1>
+        <p>A ti te daría todas las comidas del mundo. ✨</p>
+    </div>
+
+    <!-- Script para generar corazones flotantes automáticamente -->
+    <script>
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            
+            // Alterna entre diferentes formas de corazones
+            const heartTypes = ['❤️', '💖', '💝', '💕'];
+            heart.innerText = heartTypes[Math.floor(Math.random() * heartTypes.length)];
+            
+            // Posición horizontal aleatoria
+            heart.style.left = Math.random() * 100 + "vw";
+            
+            // Tamaño aleatorio
+            const size = Math.random() * 20 + 15;
+            heart.style.fontSize = size + "px";
+            
+            // Velocidad de la animación aleatoria
+            const duration = Math.random() * 3 + 4;
+            heart.style.animationDuration = duration + "s";
+            
+            document.body.appendChild(heart);
+            
+            // Elimina el corazón después de que termine la animación
+            setTimeout(() => {
+                heart.remove();
+            }, duration * 1000);
+        }
+
+        // Genera un corazón cada 400 milisegundos
+        setInterval(createHeart, 400);
+    </script>
+
+</body>
+</html>
